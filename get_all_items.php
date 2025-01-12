@@ -19,8 +19,16 @@ if ($result -> num_rows > 0) {
     while($row = $result -> fetch_assoc()) $data[] = $row;
 
     echo json_encode($data);
+} else {
+    $messageArray = array();
+    $messageArray[] = array(
+        "name" => "List is empty",
+        "tel" => 0,
+        "time" => "0",
+        "age" => "0"
+    );
+    echo json_encode($messageArray);
 }
-else echo json_encode(array("message" => "List is empty"));
 
 $connect -> close();
 

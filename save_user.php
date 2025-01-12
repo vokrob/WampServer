@@ -12,10 +12,10 @@ if ($connect -> connect_error) die("Connection failed: " . $connect -> connect_e
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$name = mysql_escape_string($connect, $data['name']);
-$tel = mysql_escape_string($connect, $data['tel']);
-$time = mysql_escape_string($connect, $data['time']);
-$age = mysql_escape_string($connect, $data['age']);
+$name = mysqli_real_escape_string($connect, $data['name']);
+$tel = mysqli_real_escape_string($connect, $data['tel']);
+$time = mysqli_real_escape_string($connect, $data['time']);
+$age = mysqli_real_escape_string($connect, $data['age']);
 
 $sql = "INSERT INTO $table_name (name, tel, time, age) VALUES ('$name', '$tel', '$time', '$age')";
 
